@@ -1,0 +1,44 @@
+﻿@using BlazorRightSidebar.Infrastructure
+@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+
+            @if (PageLayoutService.BarContent != null)
+            {
+                <div class="main-topbar-button d-inline-block me-2 ms-2" @onclick="ToggleRightbar">
+                    <span>Click me!</span>
+                </div>
+            }
+
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            <CascadingValue Value="PageLayoutService">
+            @Body
+            </CascadingValue>
+        </article>
+    </main>
+
+    @if (PageLayoutService.BarContent != null && RightbarVisible)
+    {
+        <div class="sidebar-right">
+            <RightSiderbar BarFragment="@PageLayoutService.BarContent" />
+        </div>
+    }
+
+
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+

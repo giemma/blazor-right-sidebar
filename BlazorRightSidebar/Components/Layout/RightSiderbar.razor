@@ -1,0 +1,19 @@
+﻿
+
+<div class="nav-scrollable">
+    <nav class="flex-column ms-2 me-1">
+
+        <h1>Help</h1>
+
+        <div class="help-container">
+            @BarFragment
+        </div>
+
+    </nav>
+</div>
+
+@code{
+
+    [Parameter]
+    public RenderFragment BarFragment { get; set; }
+}
